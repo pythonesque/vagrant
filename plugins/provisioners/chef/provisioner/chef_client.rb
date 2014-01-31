@@ -17,12 +17,12 @@ module VagrantPlugins
 
         def provision
           verify_binary(chef_binary_path("chef-client"))
-          chown_provisioning_folder
           create_client_key_folder
           upload_validation_key
           upload_encrypted_data_bag_secret if @config.encrypted_data_bag_secret_key_path
           setup_json
           setup_server_config
+          chown_provisioning_folder
           run_chef_client
         end
 

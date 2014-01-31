@@ -45,12 +45,12 @@ module VagrantPlugins
             end
           end
 
-          chown_provisioning_folder
           verify_shared_folders(check)
           verify_binary(chef_binary_path("chef-solo"))
           upload_encrypted_data_bag_secret if @config.encrypted_data_bag_secret_key_path
           setup_json
           setup_solo_config
+          chown_provisioning_folder
           run_chef_solo
           delete_encrypted_data_bag_secret
         end
